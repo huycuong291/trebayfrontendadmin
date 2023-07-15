@@ -15,15 +15,15 @@ export default function RoomForm({ assetId, isCreating, room }: { assetId: strin
     initialValues: room
       ? room
       : {
-          roomNo: '',
-          numberOfBed: '',
-          dayPrice: '',
+          roomNo: "",
+          numberOfBed: "",
+          dayPrice: "",
           blocked: false,
           hotelID: assetId,
           hourFeePolicies: [],
         },
     validate: {
-      roomNo: (value: string) => (value.length < 1 ? "Không được để trống số/tên phòng" : null),
+      roomNo: (value: string | undefined) => (value && value.length < 1 ? "Không được để trống số/tên phòng" : null),
       numberOfBed: (value: string) => (/^[1-9][0-9]*$/.test(value) ? null : "Số giường phải là một số lớn hơn 0"),
       dayPrice: (value: string) => (/^[1-9][0-9]*$/.test(value) ? null : "Tiền phòng theo ngày phải là một số lớn hơn 0"),
     },
