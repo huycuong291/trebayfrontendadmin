@@ -49,14 +49,14 @@ export default function PoliciesTable({ form, disabled }: { form: any; disabled?
             textAlignment: "center",
             title: "Số giờ",
             width: "20%",
-            render: (record, index) => <NumberInput value={record.hour} onChange={(value) => handleUpdateField(index, { hour: value as number, fee: record.fee })} disabled={disabled} />,
+            render: (record: any, index) => <NumberInput value={record.hour} onChange={(value) => handleUpdateField(index, { hour: value as number, fee: record.fee })} disabled={disabled} />,
           },
           {
             accessor: "fee",
             title: "Giá tiền",
             textAlignment: "center",
             width: "20%",
-            render: (record, index) => <NumberInput value={record.fee} onChange={(value) => handleUpdateField(index, { hour: record.hour, fee: value as number })} disabled={disabled} />,
+            render: (record: any, index) => <NumberInput value={record.fee} onChange={(value) => handleUpdateField(index, { hour: record.hour, fee: value as number })} disabled={disabled} />,
           },
           {
             accessor: "actions",

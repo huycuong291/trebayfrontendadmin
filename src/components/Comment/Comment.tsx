@@ -4,7 +4,7 @@ import { useCommentStyles } from "./Comment.style";
 import { useDisclosure } from "@mantine/hooks";
 import { useEffect, useState } from "react";
 import { CommentAddDto, CommentUpdateDto, addCommentAPI, deleteCommentAPI, getCommentAPI, updateCommentAPI } from "@/api/comment";
-import { on } from "events";
+
 interface ItemCommentProps {
   _id: string;
   accommodationID?: string;
@@ -141,7 +141,7 @@ const ItemComment = (props: ListCommentProps) => {
           {isUpdate ? (
             <>
               <>
-                <Input defaultValue={updateContent} onChange={(event) => setUpdateContent(event.currentTarget.value)}></Input>
+                <Input defaultValue={updateContent} onChange={(event: any) => setUpdateContent(event.currentTarget.value)}></Input>
                 <Space h={"sm"}></Space>
                 <Flex>
                   <IconCheck color="green" size={14} stroke={5} onClick={handleUpdateComment} />
@@ -175,7 +175,7 @@ const ItemComment = (props: ListCommentProps) => {
             <Flex justify={"center"} align={"center"}>
               <Avatar src={userAvatar} radius="xl" />
               <Space w={"sm"}></Space>
-              <Textarea w={"30rem"} placeholder="Nhập câu trả lời của bạn" onChange={(event) => setReply(event.currentTarget.value)}></Textarea>
+              <Textarea w={"30rem"} placeholder="Nhập câu trả lời của bạn" onChange={(event: any) => setReply(event.currentTarget.value)}></Textarea>
               <ActionIcon onClick={handleSendNewComment}>
                 <IconSend size={14} stroke={1.5} />
               </ActionIcon>
