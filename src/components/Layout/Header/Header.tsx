@@ -41,7 +41,7 @@ export default function Header() {
   return (
     <div className={classes.header}>
       {/* <SearchBar className={classes.search} /> */}
-      <Space w="70%"></Space>
+      <Space></Space>
       <AccountHeader {...account} />
     </div>
   );
