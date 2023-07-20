@@ -2,7 +2,7 @@ import { Button, Container, Flex, Input, Skeleton, Text } from "@mantine/core";
 import React, { useState, useEffect, useRef } from "react";
 import MapPicker from "react-google-map-picker";
 const DefaultZoom = 16;
-const GOOGLE_MAPS_APIKEY = "AIzaSyDAWEb9MuB2YxHqHDUrqi_S4_tnLQskd0o";
+const GOOGLE_MAPS_APIKEY = "AIzaSyBMTNMKZCm07BTAIcABA58bwkVwnI7uy-M";
 
 interface Props {
   form: any;
