@@ -194,3 +194,19 @@ export const completeOrder = async (order: IOrderDetail) => {
     })
     .catch((error) => console.log(error));
 };
+
+export const searchOrderRoom = async (hotelID: string, roomNOs: string[], gmail: string | null, phoneNumber: string | null, userName: string | null) => {
+  const requestBody = {
+    hotelID,
+    roomNOs,
+    gmail,
+    phoneNumber,
+    userName,
+  };
+  return api
+    .post(`hotelOrder/search`, requestBody)
+    .then((response) => response.data)
+    .catch((error) => {
+      console.log(error);
+    });
+};

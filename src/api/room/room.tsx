@@ -1,14 +1,14 @@
-import { styles } from '@/utils/toasts';
-import { RecordRoom } from '@/utils/types';
-import { showNotification } from '@mantine/notifications';
-import { IconCheck } from '@tabler/icons';
-import { api } from '../axios';
-
-const room = 'room/';
+import { styles } from "@/utils/toasts";
+import { RecordRoom } from "@/utils/types";
+import { showNotification } from "@mantine/notifications";
+import { IconCheck } from "@tabler/icons";
+import { api } from "../axios";
+const hotel = "hotel/";
+const room = "room/";
 
 export const getAllRooms = async (hotelId: string) => {
   return api
-    .get(room + 'all/special', { params: { hotelID: hotelId } })
+    .get(room + "all/special", { params: { hotelID: hotelId } })
     .then((response) => {
       return response.data;
     })
@@ -19,7 +19,7 @@ export const getAllRooms = async (hotelId: string) => {
 
 export const getAllRoomsHotel = async (hotelId: string) => {
   return api
-    .get(room + 'all', { params: { hotelID: hotelId } })
+    .get(room + "all", { params: { hotelID: hotelId } })
     .then((response) => {
       return response.data;
     })
@@ -38,10 +38,10 @@ export const addRoom = async (roomData: RecordRoom) => {
     })
     .then((response) => {
       showNotification({
-        title: 'Thành công!',
-        message: 'Tạo phòng thành công',
+        title: "Thành công!",
+        message: "Tạo phòng thành công",
         icon: <IconCheck />,
-        styles: (theme) => styles('green', theme),
+        styles: (theme) => styles("green", theme),
       });
     })
     .catch((err) => {
@@ -60,10 +60,10 @@ export const updateRoom = async (roomData: RecordRoom) => {
     })
     .then((response) => {
       showNotification({
-        title: 'Thành công!',
-        message: 'Cập nhật thành công',
+        title: "Thành công!",
+        message: "Cập nhật thành công",
         icon: <IconCheck />,
-        styles: (theme) => styles('green', theme),
+        styles: (theme) => styles("green", theme),
       });
     })
     .catch((err) => {
@@ -76,10 +76,10 @@ export const deleteMultipleRooms = async (roomIds: string[]) => {
     .delete(room, { data: roomIds })
     .then((response) => {
       showNotification({
-        title: 'Thành công!',
-        message: 'Xóa phòng thành công',
+        title: "Thành công!",
+        message: "Xóa phòng thành công",
         icon: <IconCheck />,
-        styles: (theme) => styles('green', theme),
+        styles: (theme) => styles("green", theme),
       });
     })
     .catch((err) => {
@@ -87,9 +87,9 @@ export const deleteMultipleRooms = async (roomIds: string[]) => {
     });
 };
 
-export const getAvailableRooms = async (hotelId: string,from:string,to:string) => {
+export const getAvailableRooms = async (hotelId: string, from: string, to: string) => {
   return api
-    .get(room + `available?hotelID=${hotelId}&from=${from}&to=${to}`)
+    .get(hotel + room + `available?hotelID=${hotelId}&from=${from}&to=${to}`)
     .then((response) => {
       console.log(response);
 

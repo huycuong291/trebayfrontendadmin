@@ -1,13 +1,13 @@
-import { toPercentage } from '@/utils/formats';
-import { styles } from '@/utils/toasts';
-import { IOrderDataTable, IOrderDetail } from '@/utils/types';
-import { showNotification } from '@mantine/notifications';
-import { IconCheck } from '@tabler/icons';
-import { api } from '../axios';
-import { TOWNHOUSE } from '@/constants/routes';
+import { toPercentage } from "@/utils/formats";
+import { styles } from "@/utils/toasts";
+import { IOrderDataTable, IOrderDetail } from "@/utils/types";
+import { showNotification } from "@mantine/notifications";
+import { IconCheck } from "@tabler/icons";
+import { api } from "../axios";
+import { TOWNHOUSE } from "@/constants/routes";
 
-const ORDER = 'order';
-const INVOICE = 'invoice';
+const ORDER = "order";
+const INVOICE = "invoice";
 
 export const getAllOrdersOfTownhouse = async (townhouseId: string) => {
   return api
@@ -39,8 +39,7 @@ export const getInvoiceTownhouse = async (orderType: number, orderId: string) =>
 };
 
 export const createOrderTownhouse = async (order: IOrderDetail) => {
-  const orderTownhouseDetail =
-  {
+  const orderTownhouseDetail = {
     checkIn: order.checkIn ? order.checkIn : new Date().toISOString(),
     checkOut: order.checkOut,
     gmail: order.gmail,
@@ -57,20 +56,16 @@ export const createOrderTownhouse = async (order: IOrderDetail) => {
     typeOfDiscount: order.typeOfDiscount,
     surcharges: order.roomSurcharges,
     createdBy: order.createdBy,
-  }
-  console.log('post order townhouse', orderTownhouseDetail);
+  };
+  console.log("post order townhouse", orderTownhouseDetail);
   return api
-    .post(
-      `${ORDER}${TOWNHOUSE}`,
-      { ...orderTownhouseDetail },
-      { params: {} }
-    )
+    .post(`${ORDER}${TOWNHOUSE}`, { ...orderTownhouseDetail }, { params: {} })
     .then((response) => {
       showNotification({
-        title: 'Thành công!',
-        message: 'Tạo hóa đơn thành công',
+        title: "Thành công!",
+        message: "Tạo hóa đơn thành công",
         icon: <IconCheck />,
-        styles: (theme) => styles('green', theme),
+        styles: (theme) => styles("green", theme),
       });
       return response;
     })
@@ -82,10 +77,10 @@ export const deleteOrderTownhouse = async (orderId: string) => {
     .delete(`${ORDER}${TOWNHOUSE}`, { params: { orderID: orderId } })
     .then((response) =>
       showNotification({
-        title: 'Thành công!',
-        message: 'Xóa hóa đơn thành công',
+        title: "Thành công!",
+        message: "Xóa hóa đơn thành công",
         icon: <IconCheck />,
-        styles: (theme) => styles('green', theme),
+        styles: (theme) => styles("green", theme),
       })
     )
     .catch((error) => console.log(error));
@@ -108,10 +103,10 @@ export const updateOrderTownhouse = async (order: IOrderDetail) => {
     )
     .then((response) => {
       showNotification({
-        title: 'Thành công!',
-        message: 'Cập nhật hóa đơn thành công',
+        title: "Thành công!",
+        message: "Cập nhật hóa đơn thành công",
         icon: <IconCheck />,
-        styles: (theme) => styles('green', theme),
+        styles: (theme) => styles("green", theme),
       });
       return response;
     })
@@ -148,12 +143,27 @@ export const completeOrderTownhouse = async (order: IOrderDetail) => {
     )
     .then((response) => {
       showNotification({
-        title: 'Thành công!',
-        message: 'Thanh toán hóa đơn thành công',
+        title: "Thành công!",
+        message: "Thanh toán hóa đơn thành công",
         icon: <IconCheck />,
-        styles: (theme) => styles('green', theme),
+        styles: (theme) => styles("green", theme),
       });
       return response;
     })
     .catch((error) => console.log(error));
+};
+
+export const searchOrderVillaTownHouse = async (hotelID: string, gmail: string | null, phoneNumber: string | null, userName: string | null) => {
+  const requestBody = {
+    townhouseID: hotelID,
+    gmail,
+    phoneNumber,
+    userName,
+  };
+  return api
+    .post(`/villaTownhouseOrder/search`, requestBody)
+    .then((response) => response.data)
+    .catch((error) => {
+      console.log(error);
+    });
 };

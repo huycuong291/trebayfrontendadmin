@@ -27,6 +27,7 @@ import { selectUser } from '@/redux/selectors';
 import OrdersPage from '@/pages/Orders';
 import OrderDetailPage from '@/pages/OrderDetail';
 import NewsPage from "./pages/News";
+import Setting from './pages/Setting';
 
 function App() {
   const userSelected = useSelector(selectUser);
@@ -64,7 +65,7 @@ function App() {
               <Route path={`${TOWNHOUSE}/:id`} element={<TownhouseDetailPage />} />
               <Route path={ACCOUNTS} element={<AccountsPage />} />
               <Route path={ORDERS} element={<ComingSoon />} />
-              <Route path={SETTING} element={<ComingSoon />} />
+              <Route path={SETTING} element={<Setting />} />
               <Route path={`${ORDERS}${HOTEL}`} element={<OrdersPage assetType="hotel" />} />
               <Route path={`${ORDERS}${VILLA}`} element={<OrdersPage assetType="villa" />} />
               <Route path={`${ORDERS}${TOWNHOUSE}`} element={<OrdersPage assetType="town-house" />} />
